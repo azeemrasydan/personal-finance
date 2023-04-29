@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeNavbarComponent } from './home-navbar.component';
+import { Profile } from 'src/app/entity/Profile';
 
 describe('HomeNavbarComponent', () => {
   let component: HomeNavbarComponent;
@@ -14,6 +15,9 @@ describe('HomeNavbarComponent', () => {
 
     fixture = TestBed.createComponent(HomeNavbarComponent);
     component = fixture.componentInstance;
+
+    component.appProfile = new Profile();
+    
     fixture.detectChanges();
   });
 

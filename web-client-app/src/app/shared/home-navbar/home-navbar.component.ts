@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Profile } from '../entity/Profile';
+import { Profile } from '../../entity/Profile';
 
 @Component({
   selector: 'app-home-navbar',

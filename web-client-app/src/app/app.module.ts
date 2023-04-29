@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeNavbarComponent } from './home-navbar/home-navbar.component';
+import { HomeNavbarComponent } from './shared/home-navbar/home-navbar.component';
 
 @NgModule({
   declarations: [
