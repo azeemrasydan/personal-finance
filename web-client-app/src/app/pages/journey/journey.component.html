@@ -1,1 +1,76 @@
-<p>journey works!</p>
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[400px]">
+    <h2 class="text-xl font-bold mb-4">
+        <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 3.31 0 6-2.69 6-6 0-3.31-2.69-6-6-6zm3 9h-2v2h-2v-2H9V9h2V7h2v2h2v2z" />
+        </svg>
+        Add Cash Flow
+    </h2>
+    <form (ngSubmit)="calculateAffordability()">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="annualIncome">
+                Annual Income
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="annualIncome" type="number" placeholder="Annual Income" [(ngModel)]="annualIncome">
+        </div>
+
+        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Add Cash Flow
+        </button>
+
+
+    </form>
+</div>
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[400px]">
+    <form (ngSubmit)="calculateAffordability()">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="annualIncome">
+                Annual Income
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="annualIncome" type="number" placeholder="Annual Income" [(ngModel)]="annualIncome">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="monthlyDebt">
+                Monthly Debt
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="monthlyDebt" type="number" placeholder="Monthly Debt" [(ngModel)]="monthlyDebt">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="interestRate">
+                Interest Rate
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="interestRate" type="number" placeholder="Interest Rate" [(ngModel)]="interestRate">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="loanTerm">
+                Loan Term
+            </label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="loanTerm" type="number" placeholder="Loan Term" [(ngModel)]="loanTerm">
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Calculate Affordability
+        </button>
+
+    </form>
+
+    <div *ngIf="showAffordability" class="border border-gray-300 p-4 m-2 transition-opacity duration-500 ease-in-out"
+        [ngStyle]="{'opacity': showAffordability ? 1 : 0}">
+        <h2 class="text-xl font-bold">Your Affordability Result:</h2>
+        <p class="mt-2">Based on the provided information, you {{ affordabilityResult ? 'can' : 'cannot' }} afford to
+            own a house.</p>
+    </div>
+
+</div>
