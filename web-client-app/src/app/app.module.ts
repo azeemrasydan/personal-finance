@@ -7,6 +7,8 @@ import { HomeNavbarComponent } from './shared/home-navbar/home-navbar.component'
 import { JourneyComponent } from './pages/journey/journey.component';
 import { SimulationComponent } from './pages/simulation/simulation.component';
 import { PlanComponent } from './pages/plan/plan.component';
+import { FormsModule } from '@angular/forms';
+import { LeftSidebarComponent } from './shared/left-sidebar/left-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { PlanComponent } from './pages/plan/plan.component';
     HomeNavbarComponent,
     JourneyComponent,
     SimulationComponent,
-    PlanComponent
+    PlanComponent,
+    LeftSidebarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
