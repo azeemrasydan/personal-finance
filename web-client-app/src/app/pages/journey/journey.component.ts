@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-journey',
@@ -59,12 +59,37 @@ export class JourneyComponent {
   }
 
   scrollLeft() {
-    console.log("left")
-    console.log(this.scrollableContainer);
     this.scrollableContainer?.nativeElement.scrollTo({ left: (this.scrollableContainer?.nativeElement.scrollLeft - 50), behavior: 'smooth' });
   }
 
   scrollRight() {
     this.scrollableContainer?.nativeElement.scrollTo({ left: (this.scrollableContainer?.nativeElement.scrollLeft + 50), behavior: 'smooth' });
   }
+
+  registerArrowLeftEvent(event: KeyboardEvent) {
+    if (event.key === "ArrowLeft") {
+      this.scrollLeft();
+    }
+  }
+
+  registerArrowRightEvent(event: KeyboardEvent) {
+    if (event.key === "ArrowRight") {
+      this.scrollRight();
+    }
+  }
+
+  registerEnterEvent(event: KeyboardEvent) {
+    if (event.key === "Enter") {
+      this.calculateAffordability();
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.registerArrowLeftEvent(event);
+    this.registerArrowRightEvent(event);
+    this.registerEnterEvent(event);
+  }
+
+
 }
