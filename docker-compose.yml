@@ -1,0 +1,18 @@
+version: '0.0.1'
+services:
+  api-service:
+    image: api-service
+    build:
+      context: ./finance
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+
+  web-app:
+    image: web-app
+    build:
+      context: ./web-client-app
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+
