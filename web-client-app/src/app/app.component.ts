@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Profile } from './entity/Profile';
+import { Profile } from './entity/profile';
 
 @Component({
   selector: 'app-root',

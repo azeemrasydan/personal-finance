@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeNavbarComponent } from './home-navbar.component';
-import { Profile } from 'src/app/entity/Profile';
+import { Profile } from 'src/app/entity/profile';
 
 describe('HomeNavbarComponent', () => {
   let component: HomeNavbarComponent;

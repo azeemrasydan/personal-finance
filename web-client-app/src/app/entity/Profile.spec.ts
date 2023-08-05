@@ -1,4 +1,4 @@
-import { Profile } from "./Profile";
+import { Profile } from "./profile";
 
 describe('Profile Entity', () => {
    it('Profile is initialized with anonymous if name is not provided', () => {
