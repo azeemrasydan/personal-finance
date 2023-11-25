@@ -1,0 +1,19 @@
+Bank Name,Bank Type,Card Types
+Affin Bank,Local,Mastercard, Visa
+Alliance Bank,Local,Mastercard, Visa
+AmBank,Local,Mastercard, Visa, UnionPay
+Bank Islam Malaysia (i),Islamic,Mastercard, Visa
+Bank Muamalat (i),Islamic,Visa
+Bank Simpanan Nasional (i),Islamic,Mastercard, Visa
+Bank Rakyat (i),Islamic,Mastercard
+CIMB Bank,Local,Mastercard, Visa
+Citibank Malaysia(Sold to UOB Group Malaysia),International,Mastercard
+Hong Leong Bank,Local,Mastercard, Visa
+HSBC Bank Malaysia,International,Mastercard, Visa
+Industrial and Commercial Bank of China (ICBC),International,UnionPay, Visa
+Maybank,Local,American Express, Mastercard, Visa
+OCBC Bank,International,Mastercard, Visa
+Public Bank Berhad,Local,Mastercard, Visa
+RHB Bank,Local,Mastercard, Visa
+Standard Chartered,International,Mastercard, Visa
+United Overseas Bank,International,Mastercard, Visa
