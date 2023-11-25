@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 public class Person {
-    private String firstName;
-    private String lastName;
-    private Date dateOfBirth;
-    private String socialSecurityNumber;
-    private List<Asset> assets;
-    private List<Liability> liabilities;
-    private List<Expense> expenses;
-    private List<Income> incomes;
+    private String _firstName;
+    private String _lastName;
+    private Date _dateOfBirth;
+    private String _socialSecurityNumber;
+    private List<Asset> _assets;
+    private List<Liability> _liabilities;
+    private List<Expense> _expenses;
+    private List<Income> _incomes;
 
     // Constructors, getters, and setters
 
@@ -24,80 +24,80 @@ public class Person {
     public Person(String firstName, String lastName, Date dateOfBirth, String socialSecurityNumber,
             List<Asset> assets, List<Liability> liabilities,
             List<Expense> expenses, List<Income> incomes) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.socialSecurityNumber = socialSecurityNumber;
-        this.assets = assets;
-        this.liabilities = liabilities;
-        this.expenses = expenses;
-        this.incomes = incomes;
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._dateOfBirth = dateOfBirth;
+        this._socialSecurityNumber = socialSecurityNumber;
+        this._assets = assets;
+        this._liabilities = liabilities;
+        this._expenses = expenses;
+        this._incomes = incomes;
     }
 
     // Getters and setters for all attributes
 
     public String getFirstName() {
-        return firstName;
+        return _firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this._firstName = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return _lastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this._lastName = lastName;
     }
 
     public Date getDateOfBirth() {
-        return dateOfBirth;
+        return _dateOfBirth;
     }
 
     public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+        this._dateOfBirth = dateOfBirth;
     }
 
     public String getSocialSecurityNumber() {
-        return socialSecurityNumber;
+        return _socialSecurityNumber;
     }
 
     public void setSocialSecurityNumber(String socialSecurityNumber) {
-        this.socialSecurityNumber = socialSecurityNumber;
+        this._socialSecurityNumber = socialSecurityNumber;
     }
 
     public List<Asset> getAssets() {
-        return assets;
+        return _assets;
     }
 
     public void setAssets(List<Asset> assets) {
-        this.assets = assets;
+        this._assets = assets;
     }
 
     public List<Liability> getLiabilities() {
-        return liabilities;
+        return _liabilities;
     }
 
     public void setLiabilities(List<Liability> liabilities) {
-        this.liabilities = liabilities;
+        this._liabilities = liabilities;
     }
 
     public List<Expense> getExpenses() {
-        return expenses;
+        return _expenses;
     }
 
     public void setExpenses(List<Expense> expenses) {
-        this.expenses = expenses;
+        this._expenses = expenses;
     }
 
     public List<Income> getIncomes() {
-        return incomes;
+        return _incomes;
     }
 
     public void setIncomes(List<Income> incomes) {
-        this.incomes = incomes;
+        this._incomes = incomes;
     }
 
     public void setRecurringIncome(String frequency, int dayOfMonth, Date startDate, Date endDate,
@@ -126,7 +126,7 @@ public class Person {
 
         while (calendar.getTime().before(endDate) || calendar.getTime().equals(endDate)) {
             // Generate income for each day
-            this.incomes.add(new Income("Daily Income", incomeAmount, calendar.getTime()));
+            _incomes.add(new Income("Daily Income", incomeAmount, calendar.getTime()));
 
             // Move to the next day
             calendar.add(Calendar.DAY_OF_MONTH, 1);
@@ -139,7 +139,7 @@ public class Person {
 
         while (calendar.getTime().before(endDate) || calendar.getTime().equals(endDate)) {
             // Generate income for each week
-            this.incomes.add(new Income("Weekly Income", incomeAmount, calendar.getTime()));
+            _incomes.add(new Income("Weekly Income", incomeAmount, calendar.getTime()));
 
             // Move to the next week
             calendar.add(Calendar.WEEK_OF_YEAR, 1);
@@ -153,17 +153,18 @@ public class Person {
         while (calendar.getTime().before(endDate) || calendar.getTime().equals(endDate)) {
             // Generate income for each month on the specified day
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            this.incomes.add(new Income("Monthly Income", incomeAmount, calendar.getTime()));
+            _incomes.add(new Income("Monthly Income", incomeAmount, calendar.getTime()));
 
             // Move to the next month
             calendar.add(Calendar.MONTH, 1);
         }
     }
 
-    public void setRecurringExpense(String frequency, int dayOfMonth, Date startDate, Date endDate, double expenseAmount) {
+    public void setRecurringExpense(String frequency, int dayOfMonth, Date startDate, Date endDate,
+            double expenseAmount) {
         // Assume frequency is one of: "daily", "weekly", "monthly"
         // You can customize this logic based on your requirements
-    
+
         switch (frequency.toLowerCase()) {
             case "daily":
                 addDailyRecurringExpenses(startDate, endDate, expenseAmount);
@@ -178,46 +179,45 @@ public class Person {
                 throw new IllegalArgumentException("Invalid frequency");
         }
     }
-    
+
     private void addDailyRecurringExpenses(Date startDate, Date endDate, double expenseAmount) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startDate);
-    
+
         while (calendar.getTime().before(endDate) || calendar.getTime().equals(endDate)) {
             // Generate expense for each day
-            this.expenses.add(new Expense("Daily Expense", expenseAmount, calendar.getTime()));
-    
+            _expenses.add(new Expense("Daily Expense", expenseAmount, calendar.getTime()));
+
             // Move to the next day
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
     }
-    
+
     private void addWeeklyRecurringExpenses(Date startDate, Date endDate, double expenseAmount) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startDate);
-    
+
         while (calendar.getTime().before(endDate) || calendar.getTime().equals(endDate)) {
             // Generate expense for each week
-            this.expenses.add(new Expense("Weekly Expense", expenseAmount, calendar.getTime()));
-    
+            _expenses.add(new Expense("Weekly Expense", expenseAmount, calendar.getTime()));
+
             // Move to the next week
             calendar.add(Calendar.WEEK_OF_YEAR, 1);
         }
     }
-    
+
     private void addMonthlyRecurringExpenses(Date startDate, Date endDate, int dayOfMonth, double expenseAmount) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startDate);
-    
+
         while (calendar.getTime().before(endDate) || calendar.getTime().equals(endDate)) {
             // Generate expense for each month on the specified day
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            this.expenses.add(new Expense("Monthly Expense", expenseAmount, calendar.getTime()));
-    
+            _expenses.add(new Expense("Monthly Expense", expenseAmount, calendar.getTime()));
+
             // Move to the next month
             calendar.add(Calendar.MONTH, 1);
         }
     }
-    
 
 }
