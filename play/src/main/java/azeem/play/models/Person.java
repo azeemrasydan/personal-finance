@@ -1,5 +1,6 @@
 package azeem.play.models;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -9,10 +10,10 @@ public class Person {
     private String _lastName;
     private Date _dateOfBirth;
     private String _socialSecurityNumber;
-    private List<Asset> _assets;
-    private List<Liability> _liabilities;
-    private List<Expense> _expenses;
-    private List<Income> _incomes;
+    private List<Asset> _assets = new ArrayList<Asset>();
+    private List<Liability> _liabilities = new ArrayList<Liability>();
+    private List<Expense> _expenses = new ArrayList<Expense>();
+    private List<Income> _incomes = new ArrayList<Income>();
 
     // Constructors, getters, and setters
 
@@ -21,86 +22,64 @@ public class Person {
     }
 
     // Parameterized constructor
-    public Person(String firstName, String lastName, Date dateOfBirth, String socialSecurityNumber,
-            List<Asset> assets, List<Liability> liabilities,
-            List<Expense> expenses, List<Income> incomes) {
+    public Person(String firstName, String lastName, Date dateOfBirth, String socialSecurityNumber) {
         this._firstName = firstName;
         this._lastName = lastName;
         this._dateOfBirth = dateOfBirth;
         this._socialSecurityNumber = socialSecurityNumber;
-        this._assets = assets;
-        this._liabilities = liabilities;
-        this._expenses = expenses;
-        this._incomes = incomes;
     }
 
     // Getters and setters for all attributes
 
-    public String getFirstName() {
+    public String firstName() {
         return _firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this._firstName = firstName;
-    }
-
-    public String getLastName() {
+    public String lastName() {
         return _lastName;
     }
 
-    public void setLastName(String lastName) {
-        this._lastName = lastName;
-    }
-
-    public Date getDateOfBirth() {
+    public Date dateOfBirth() {
         return _dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this._dateOfBirth = dateOfBirth;
-    }
-
-    public String getSocialSecurityNumber() {
+    public String socialSecurityNumber() {
         return _socialSecurityNumber;
     }
 
-    public void setSocialSecurityNumber(String socialSecurityNumber) {
-        this._socialSecurityNumber = socialSecurityNumber;
-    }
-
-    public List<Asset> getAssets() {
+    public List<Asset> assets() {
         return _assets;
     }
 
-    public void setAssets(List<Asset> assets) {
-        this._assets = assets;
+    public void addAllAssets(List<Asset> assets) {
+        this._assets.addAll(assets);
     }
 
-    public List<Liability> getLiabilities() {
+    public List<Liability> liabilities() {
         return _liabilities;
     }
 
-    public void setLiabilities(List<Liability> liabilities) {
-        this._liabilities = liabilities;
+    public void addAllLiabilities(List<Liability> liabilities) {
+        this._liabilities.addAll(liabilities);
     }
 
-    public List<Expense> getExpenses() {
+    public List<Expense> expenses() {
         return _expenses;
     }
 
-    public void setExpenses(List<Expense> expenses) {
-        this._expenses = expenses;
+    public void addAllExpenses(List<Expense> expenses) {
+        this._expenses.addAll(expenses);
     }
 
-    public List<Income> getIncomes() {
+    public List<Income> incomes() {
         return _incomes;
     }
 
-    public void setIncomes(List<Income> incomes) {
-        this._incomes = incomes;
+    public void addAllIncomes(List<Income> incomes) {
+        this._incomes.addAll(incomes);
     }
 
-    public void setRecurringIncome(String frequency, int dayOfMonth, Date startDate, Date endDate,
+    public void addRecurringIncome(String frequency, int dayOfMonth, Date startDate, Date endDate,
             double incomeAmount) {
         // Assume frequency is one of: "daily", "weekly", "monthly"
         // You can customize this logic based on your requirements
@@ -160,7 +139,7 @@ public class Person {
         }
     }
 
-    public void setRecurringExpense(String frequency, int dayOfMonth, Date startDate, Date endDate,
+    public void addRecurringExpense(String frequency, int dayOfMonth, Date startDate, Date endDate,
             double expenseAmount) {
         // Assume frequency is one of: "daily", "weekly", "monthly"
         // You can customize this logic based on your requirements

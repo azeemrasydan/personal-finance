@@ -2,8 +2,6 @@ package azeem.play;
 
 import java.util.Scanner;
 
-import azeem.play.models.Person;
-
 /**
  * Hello world!
  *
@@ -34,6 +32,6 @@ public class App {
     }
 
     public static void mainProgram() {
-        var azeem = new Person()
+
     }
 }
