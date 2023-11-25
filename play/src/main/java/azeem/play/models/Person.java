@@ -14,6 +14,7 @@ public class Person {
     private List<Liability> _liabilities = new ArrayList<Liability>();
     private List<Expense> _expenses = new ArrayList<Expense>();
     private List<Income> _incomes = new ArrayList<Income>();
+    private InvestmentPortfolio _investmentPortfolio;
 
     // Constructors, getters, and setters
 
@@ -197,6 +198,14 @@ public class Person {
             // Move to the next month
             calendar.add(Calendar.MONTH, 1);
         }
+    }
+
+    public void addInvestmentPortfolio(InvestmentPortfolio portfolio) {
+        _investmentPortfolio = portfolio;
+    }
+
+    public InvestmentPortfolio investmentPortfolio() {
+        return _investmentPortfolio;
     }
 
 }
