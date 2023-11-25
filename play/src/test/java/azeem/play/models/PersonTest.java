@@ -1,6 +1,8 @@
 package azeem.play.models;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
@@ -69,5 +71,93 @@ public class PersonTest {
         assertEquals(1, person.expenses().size());
         // You might want to add more specific assertions based on your implementation
     }
+
     
+    @Test
+    public void testAddRecurringIncomeDaily() {
+        Date startDate = new Date();
+        Date endDate = new Date();
+        double incomeAmount = 50.0;
+
+        person.addRecurringIncome("daily", 0, startDate, endDate, incomeAmount);
+
+        // Validate the incomes list in the person object
+        assertNotNull(person.incomes());
+        assertFalse(person.incomes().isEmpty());
+        // Add more assertions based on your specific logic
+    }
+
+    @Test
+    public void testAddRecurringIncomeWeekly() {
+        Date startDate = new Date();
+        Date endDate = new Date();
+        double incomeAmount = 100.0;
+
+        person.addRecurringIncome("weekly", 0, startDate, endDate, incomeAmount);
+
+        // Validate the incomes list in the person object
+        assertNotNull(person.incomes());
+        assertFalse(person.incomes().isEmpty());
+        // Add more assertions based on your specific logic
+    }
+
+    @Test
+    public void testAddRecurringIncomeMonthly() {
+        Date startDate = new Date();
+        Date endDate = new Date();
+        int dayOfMonth = 15;
+        double incomeAmount = 200.0;
+
+        person.addRecurringIncome("monthly", dayOfMonth, startDate, endDate, incomeAmount);
+
+        // Validate the incomes list in the person object
+        assertNotNull(person.incomes());
+        assertFalse(person.incomes().isEmpty());
+        // Add more assertions based on your specific logic
+    }
+
+    
+    @Test
+    public void testAddRecurringExpenseDaily() {
+        Date startDate = new Date();
+        Date endDate = new Date();
+        double expenseAmount = 50.0;
+
+        person.addRecurringExpense("daily", 0, startDate, endDate, expenseAmount);
+
+        // Validate the expenses list in the person object
+        assertNotNull(person.expenses());
+        assertFalse(person.expenses().isEmpty());
+        // Add more assertions based on your specific logic
+    }
+
+    @Test
+    public void testAddRecurringExpenseWeekly() {
+        Date startDate = new Date();
+        Date endDate = new Date();
+        double expenseAmount = 100.0;
+
+        person.addRecurringExpense("weekly", 0, startDate, endDate, expenseAmount);
+
+        // Validate the expenses list in the person object
+        assertNotNull(person.expenses());
+        assertFalse(person.expenses().isEmpty());
+        // Add more assertions based on your specific logic
+    }
+
+    @Test
+    public void testAddRecurringExpenseMonthly() {
+        Date startDate = new Date();
+        Date endDate = new Date();
+        int dayOfMonth = 15;
+        double expenseAmount = 200.0;
+
+        person.addRecurringExpense("monthly", dayOfMonth, startDate, endDate, expenseAmount);
+
+        // Validate the expenses list in the person object
+        assertNotNull(person.expenses());
+        assertFalse(person.expenses().isEmpty());
+        // Add more assertions based on your specific logic
+    }
+
 }
