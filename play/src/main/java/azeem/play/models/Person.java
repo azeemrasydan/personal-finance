@@ -15,6 +15,7 @@ public class Person {
     private List<Expense> _expenses = new ArrayList<Expense>();
     private List<Income> _incomes = new ArrayList<Income>();
     private InvestmentPortfolio _investmentPortfolio;
+    private Calendar _calendar;
 
     // Constructors, getters, and setters
 
@@ -23,11 +24,17 @@ public class Person {
     }
 
     // Parameterized constructor
-    public Person(String firstName, String lastName, Date dateOfBirth, String socialSecurityNumber) {
+    public Person(
+            String firstName,
+            String lastName,
+            Date dateOfBirth,
+            String socialSecurityNumber,
+            Calendar calendar) {
         this._firstName = firstName;
         this._lastName = lastName;
         this._dateOfBirth = dateOfBirth;
         this._socialSecurityNumber = socialSecurityNumber;
+        this._calendar = calendar;
     }
 
     // Getters and setters for all attributes
@@ -42,6 +49,18 @@ public class Person {
 
     public Date dateOfBirth() {
         return _dateOfBirth;
+    }
+
+    public Calendar dateOfBirthInCalendar() {
+        Calendar dateOfBirthInCalendarInYear = Calendar.getInstance();
+        dateOfBirthInCalendarInYear.setTime(_dateOfBirth);
+
+        return dateOfBirthInCalendarInYear;
+    }
+
+    public int age() {
+
+        return _calendar.get(Calendar.YEAR) - dateOfBirthInCalendar().get(Calendar.YEAR);
     }
 
     public String socialSecurityNumber() {

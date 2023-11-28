@@ -5,19 +5,29 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class PersonTest {
-    
+
     private Person person;
 
     @Before
     public void setUp() {
         // Initialize a Person object for testing
-        person = new Person("John", "Doe", new Date(), "123-45-6789");
+        Calendar calendar2023 = Calendar.getInstance();
+        calendar2023.setTime(
+                azeem.play.utility.Date.of("2023-02-01"));
+
+        person = new Person(
+                "John",
+                "Doe",
+                azeem.play.utility.Date.of("1995-01-01"),
+                "123-45-6789",
+                calendar2023);
     }
 
     @Test
@@ -72,7 +82,6 @@ public class PersonTest {
         // You might want to add more specific assertions based on your implementation
     }
 
-    
     @Test
     public void testAddRecurringIncomeDaily() {
         Date startDate = new Date();
@@ -116,7 +125,6 @@ public class PersonTest {
         // Add more assertions based on your specific logic
     }
 
-    
     @Test
     public void testAddRecurringExpenseDaily() {
         Date startDate = new Date();
@@ -158,6 +166,11 @@ public class PersonTest {
         assertNotNull(person.expenses());
         assertFalse(person.expenses().isEmpty());
         // Add more assertions based on your specific logic
+    }
+
+    @Test
+    public void testAgeIsCorrect(){
+        assertEquals(person.age(), 28);
     }
 
 }

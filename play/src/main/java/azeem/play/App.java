@@ -1,12 +1,9 @@
 package azeem.play;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Scanner;
-
-import azeem.play.models.Income;
 import azeem.play.models.Person;
+
 
 /**
  * Hello world!
@@ -36,28 +33,18 @@ public class App {
         }
     }
 
-    private static Date dateOf(String dateString) {
-        return java.sql.Date.valueOf(
-                LocalDate.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-    }
-
     public static void mainProgram() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(azeem.play.utility.Date.of("2023-01-01"));
+
         Person john = new Person(
                 "azeem",
                 "rasydan",
-                dateOf("1995-07-22"),
-                "asd");
+                azeem.play.utility.Date.of("1995-07-22"),
+                "asd",
+                calendar);
 
-        john.addRecurringIncome(
-                "monthly",
-                26,
-                dateOf("2021-01-01"),
-                dateOf("2025-07-07"),
-                3000);
-
-        for (Income income : john.incomes()) {
-            System.out.println(income.getAmount());
-        }
+        System.out.println(john.age());
 
     }
 }
