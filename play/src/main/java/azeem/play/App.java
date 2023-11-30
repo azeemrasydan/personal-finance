@@ -34,17 +34,8 @@ public class App {
     }
 
     public static void mainProgram() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(azeem.play.utility.Date.of("2023-01-01"));
+        
 
-        Person john = new Person(
-                "azeem",
-                "rasydan",
-                azeem.play.utility.Date.of("1995-07-22"),
-                "asd",
-                calendar);
-
-        System.out.println(john.age());
 
     }
 }

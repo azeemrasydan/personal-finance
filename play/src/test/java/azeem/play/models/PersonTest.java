@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Before;
@@ -18,16 +17,15 @@ public class PersonTest {
     @Before
     public void setUp() {
         // Initialize a Person object for testing
-        Calendar calendar2023 = Calendar.getInstance();
-        calendar2023.setTime(
-                azeem.play.utility.Date.of("2023-02-01"));
+
+        World world = new World(azeem.play.utility.Date.of("2023-01-01"));
 
         person = new Person(
                 "John",
                 "Doe",
                 azeem.play.utility.Date.of("1995-01-01"),
                 "123-45-6789",
-                calendar2023);
+                world);
     }
 
     @Test
@@ -166,11 +164,6 @@ public class PersonTest {
         assertNotNull(person.expenses());
         assertFalse(person.expenses().isEmpty());
         // Add more assertions based on your specific logic
-    }
-
-    @Test
-    public void testAgeIsCorrect(){
-        assertEquals(person.age(), 28);
     }
 
 }

@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Person {
+public class Person extends WorldEntity implements BoundToTime {
     private String _firstName;
     private String _lastName;
     private Date _dateOfBirth;
@@ -15,13 +15,6 @@ public class Person {
     private List<Expense> _expenses = new ArrayList<Expense>();
     private List<Income> _incomes = new ArrayList<Income>();
     private InvestmentPortfolio _investmentPortfolio;
-    private Calendar _calendar;
-
-    // Constructors, getters, and setters
-
-    // Default constructor
-    public Person() {
-    }
 
     // Parameterized constructor
     public Person(
@@ -29,12 +22,13 @@ public class Person {
             String lastName,
             Date dateOfBirth,
             String socialSecurityNumber,
-            Calendar calendar) {
+            World world) {
+
+        super(world);
         this._firstName = firstName;
         this._lastName = lastName;
         this._dateOfBirth = dateOfBirth;
         this._socialSecurityNumber = socialSecurityNumber;
-        this._calendar = calendar;
     }
 
     // Getters and setters for all attributes
@@ -56,11 +50,6 @@ public class Person {
         dateOfBirthInCalendarInYear.setTime(_dateOfBirth);
 
         return dateOfBirthInCalendarInYear;
-    }
-
-    public int age() {
-
-        return _calendar.get(Calendar.YEAR) - dateOfBirthInCalendar().get(Calendar.YEAR);
     }
 
     public String socialSecurityNumber() {
@@ -225,6 +214,15 @@ public class Person {
 
     public InvestmentPortfolio investmentPortfolio() {
         return _investmentPortfolio;
+    }
+
+    public int age(){
+        return 
+    }
+
+    @Override
+    public void onDayPassed() {
+        
     }
 
 }
