@@ -1,4 +1,4 @@
-package azeem.play.models;
+package azeem.play.finance;
 
 public enum AssetType {
     CASH,

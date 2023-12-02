@@ -1,4 +1,4 @@
-package azeem.play.models;
+package azeem.play.finance;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

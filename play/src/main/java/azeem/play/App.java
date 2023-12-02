@@ -1,16 +1,18 @@
 package azeem.play;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
-import azeem.play.models.Person;
-import azeem.play.models.World;
+import azeem.play.people.Person;
+import azeem.play.utility.Date;
+import azeem.play.world.World;
 
 /**
  * Hello world!
  *
  */
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         System.out.println("================================================");
         System.out.println("================================================");
         System.out.println("================================================");
@@ -33,27 +35,38 @@ public class App {
         }
     }
 
-    public static void mainProgram() {
+    public static void mainProgram() throws ParseException {
 
         World world = new World(
-                azeem.play.utility.Date.of("2023-01-01").inLocalDate());
+                Date.of("2023-01-01").inLocalDate());
 
         Person ar = new Person(
                 "azeem",
                 "rasydan",
-                azeem.play.utility.Date.of("1995-01-01").inLocalDate(),
+                Date.of("1995-01-01").inLocalDate(),
                 "asd",
                 world);
 
-        
+        ar.withStartingCash(3000);
 
-        System.out.println(ar.ageInYear());
+        ar.addRecurringIncome("monthly",
+                27,
+                Date.of("2021-01-01").inUtilDate(),
+                Date.of("2025-01-01").inUtilDate(),
+                3000.00);
 
-        for (int i = 0; i < 1000; i++) {
-            world.passTheDay();
-        }
+        ar.addRecurringExpense(
+                "monthly",
+                27,
+                Date.of("2021-01-01").inUtilDate(),
+                Date.of("2025-01-01").inUtilDate(),
+                2000);
 
-        System.out.println(ar.ageInYear());
+        System.out.println(ar.cashValue());
+
+        world.pass(365).days();
+
+        System.out.println(ar.cashValue());
 
     }
 }

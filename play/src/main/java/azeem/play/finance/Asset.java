@@ -1,4 +1,4 @@
-package azeem.play.models;
+package azeem.play.finance;
 
 public class Asset {
     private String name;

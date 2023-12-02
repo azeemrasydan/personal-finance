@@ -1,4 +1,4 @@
-package azeem.play.models;
+package azeem.play.people;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -6,6 +6,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import azeem.play.finance.Asset;
+import azeem.play.finance.Cash;
+import azeem.play.finance.Expense;
+import azeem.play.finance.Income;
+import azeem.play.finance.InvestmentPortfolio;
+import azeem.play.finance.Liability;
+import azeem.play.world.World;
+import azeem.play.world.WorldEntity;
 
 public class Person extends WorldEntity {
     private String _firstName;

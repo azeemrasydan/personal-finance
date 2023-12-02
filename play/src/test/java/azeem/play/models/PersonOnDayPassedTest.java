@@ -7,6 +7,9 @@ import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import azeem.play.people.Person;
+import azeem.play.world.World;
+
 public class PersonOnDayPassedTest {
     private Person person;
     private World world;

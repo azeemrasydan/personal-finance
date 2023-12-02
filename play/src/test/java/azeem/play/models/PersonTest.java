@@ -10,6 +10,15 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import azeem.play.finance.Asset;
+import azeem.play.finance.AssetType;
+import azeem.play.finance.Expense;
+import azeem.play.finance.Income;
+import azeem.play.finance.Liability;
+import azeem.play.finance.LiabilityType;
+import azeem.play.people.Person;
+import azeem.play.world.World;
+
 public class PersonTest {
 
     private Person person;

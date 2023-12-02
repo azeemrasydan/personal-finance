@@ -1,4 +1,4 @@
-package azeem.play.models;
+package azeem.play.world;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import azeem.play.time.BoundToTime;
 
 public class World implements BoundToTime {
     private Calendar _calendar;

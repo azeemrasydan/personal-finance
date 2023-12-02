@@ -1,5 +1,6 @@
 package azeem.play.models;
 
+import azeem.play.finance.Income;
 import azeem.play.utility.Date;
 
 import static org.junit.Assert.assertTrue;

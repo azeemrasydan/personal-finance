@@ -1,4 +1,6 @@
-package azeem.play.models;
+package azeem.play.world;
+
+import azeem.play.time.BoundToTime;
 
 public abstract class WorldEntity implements BoundToTime {
     protected World world;

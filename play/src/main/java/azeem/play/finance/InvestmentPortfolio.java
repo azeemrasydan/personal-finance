@@ -1,4 +1,4 @@
-package azeem.play.models;
+package azeem.play.finance;
 
 import java.util.ArrayList;
 import java.util.List;
