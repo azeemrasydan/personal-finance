@@ -2,7 +2,7 @@ package azeem.play.models;
 
 public class Asset {
     private String name;
-    private double value;
+    protected double value;
     private AssetType type;
 
     // Constructors, getters, and setters

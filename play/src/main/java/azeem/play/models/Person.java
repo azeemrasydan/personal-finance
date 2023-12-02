@@ -1,26 +1,29 @@
 package azeem.play.models;
 
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Person extends WorldEntity implements BoundToTime {
+public class Person extends WorldEntity {
     private String _firstName;
     private String _lastName;
-    private Date _dateOfBirth;
+    private LocalDate _dateOfBirth;
     private String _socialSecurityNumber;
     private List<Asset> _assets = new ArrayList<Asset>();
     private List<Liability> _liabilities = new ArrayList<Liability>();
     private List<Expense> _expenses = new ArrayList<Expense>();
     private List<Income> _incomes = new ArrayList<Income>();
     private InvestmentPortfolio _investmentPortfolio;
+    private Cash _cash;
 
     // Parameterized constructor
     public Person(
             String firstName,
             String lastName,
-            Date dateOfBirth,
+            LocalDate dateOfBirth,
             String socialSecurityNumber,
             World world) {
 
@@ -41,15 +44,21 @@ public class Person extends WorldEntity implements BoundToTime {
         return _lastName;
     }
 
-    public Date dateOfBirth() {
-        return _dateOfBirth;
+    public void withStartingCash(double cash) {
+        _cash = new Cash(cash);
+        _assets.add(_cash);
     }
 
-    public Calendar dateOfBirthInCalendar() {
-        Calendar dateOfBirthInCalendarInYear = Calendar.getInstance();
-        dateOfBirthInCalendarInYear.setTime(_dateOfBirth);
+    public Cash cash() {
+        return _cash;
+    }
 
-        return dateOfBirthInCalendarInYear;
+    public double cashValue() {
+        return _cash.getValue();
+    }
+
+    public LocalDate dateOfBirth() {
+        return _dateOfBirth;
     }
 
     public String socialSecurityNumber() {
@@ -216,13 +225,43 @@ public class Person extends WorldEntity implements BoundToTime {
         return _investmentPortfolio;
     }
 
-    public int age(){
-        return 
+    public int ageInYear() {
+        LocalDate dob = dateOfBirth();
+
+        // Calculate age
+        Duration age = Duration.between(dob.atStartOfDay(), world.currentDateTime());
+
+        long days = age.toDays();
+        int year = (int) (days / 365);
+
+        return year;
+    }
+
+    private void addCashDuringIncomeDay() {
+
+        List<Income> incomesDuringTheDay = _incomes
+                .stream()
+                .filter(income -> income.similarLocalDateTimeWith(world.currentDateTime()))
+                .toList();
+
+        incomesDuringTheDay
+                .forEach(income -> _cash.add(income.amount()));
+    }
+
+    private void minusCashDuringExpenseDay() {
+        List<Expense> expensesDuringTheDay = _expenses
+                .stream()
+                .filter(expense -> expense.similarLocalDateTimeWith(world.currentDateTime()))
+                .toList();
+
+        expensesDuringTheDay
+                .forEach(expense -> _cash.minus(expense.amount()));
     }
 
     @Override
     public void onDayPassed() {
-        
+        addCashDuringIncomeDay();
+        minusCashDuringExpenseDay();
     }
 
 }

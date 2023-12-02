@@ -18,14 +18,16 @@ public class PersonTest {
     public void setUp() {
         // Initialize a Person object for testing
 
-        World world = new World(azeem.play.utility.Date.of("2023-01-01"));
+        World world = new World(azeem.play.utility.Date.of("2023-01-01").inLocalDate());
 
         person = new Person(
                 "John",
                 "Doe",
-                azeem.play.utility.Date.of("1995-01-01"),
+                azeem.play.utility.Date.of("1995-01-01").inLocalDate(),
                 "123-45-6789",
                 world);
+
+        person.withStartingCash(3000);
     }
 
     @Test
@@ -33,7 +35,7 @@ public class PersonTest {
         Asset asset = new Asset("House", 500000.0, new AssetType("Real Estate"));
         person.assets().add(asset);
 
-        assertEquals(1, person.assets().size());
+        assertEquals(2, person.assets().size());
         assertTrue(person.assets().contains(asset));
     }
 
@@ -164,6 +166,20 @@ public class PersonTest {
         assertNotNull(person.expenses());
         assertFalse(person.expenses().isEmpty());
         // Add more assertions based on your specific logic
+    }
+
+    @Test
+    public void testAgeInYear() {
+        int ageYear = person.ageInYear();
+
+        assertEquals(28, ageYear);
+    }
+
+    @Test
+    public void testGetCash() {
+        double cash = person.cashValue();
+
+        assertEquals(3000, cash, 0.1);
     }
 
 }

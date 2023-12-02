@@ -1,5 +1,7 @@
 package azeem.play.models;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Income {
@@ -8,10 +10,6 @@ public class Income {
     private Date date;
 
     // Constructors, getters, and setters
-
-    // Default constructor
-    public Income() {
-    }
 
     // Parameterized constructor
     public Income(String name, double amount, Date date) {
@@ -22,29 +20,26 @@ public class Income {
 
     // Getters and setters for all attributes
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getAmount() {
+    public double amount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public Date getDate() {
+    public Date date() {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public LocalDateTime localDateTime() {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
-    // Other methods as needed
+    public boolean similarLocalDateTimeWith(LocalDateTime dateTime) {
+        return localDateTime().getYear() == dateTime.getYear() &&
+                localDateTime().getMonth() == dateTime.getMonth() &&
+                localDateTime().getDayOfMonth() == dateTime.getDayOfMonth();
+
+    }
 }

@@ -1,9 +1,9 @@
 package azeem.play;
 
-import java.util.Calendar;
 import java.util.Scanner;
-import azeem.play.models.Person;
 
+import azeem.play.models.Person;
+import azeem.play.models.World;
 
 /**
  * Hello world!
@@ -34,8 +34,26 @@ public class App {
     }
 
     public static void mainProgram() {
+
+        World world = new World(
+                azeem.play.utility.Date.of("2023-01-01").inLocalDate());
+
+        Person ar = new Person(
+                "azeem",
+                "rasydan",
+                azeem.play.utility.Date.of("1995-01-01").inLocalDate(),
+                "asd",
+                world);
+
         
 
+        System.out.println(ar.ageInYear());
+
+        for (int i = 0; i < 1000; i++) {
+            world.passTheDay();
+        }
+
+        System.out.println(ar.ageInYear());
 
     }
 }
