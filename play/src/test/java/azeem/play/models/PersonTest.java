@@ -10,12 +10,11 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import azeem.play.finance.Asset;
-import azeem.play.finance.AssetType;
 import azeem.play.finance.Expense;
 import azeem.play.finance.Income;
 import azeem.play.finance.Liability;
 import azeem.play.finance.LiabilityType;
+import azeem.play.finance.RealEstate;
 import azeem.play.people.Person;
 import azeem.play.world.World;
 
@@ -40,12 +39,11 @@ public class PersonTest {
     }
 
     @Test
-    public void testAddAsset() {
-        Asset asset = new Asset("House", 500000.0, AssetType.REAL_ESTATE);
-        person.assets().add(asset);
+    public void testOwnRealEstate() {
+        RealEstate theRealEstate = person.ownRealEstate("Home", 300000);
 
-        assertEquals(2, person.assets().size());
-        assertTrue(person.assets().contains(asset));
+        assertEquals(1, person.realEstates().size());
+        assertTrue(person.realEstates().contains(theRealEstate));
     }
 
     @Test

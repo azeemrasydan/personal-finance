@@ -7,12 +7,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import azeem.play.finance.Asset;
 import azeem.play.finance.Cash;
 import azeem.play.finance.Expense;
 import azeem.play.finance.Income;
 import azeem.play.finance.InvestmentPortfolio;
 import azeem.play.finance.Liability;
+import azeem.play.finance.RealEstate;
 import azeem.play.world.World;
 import azeem.play.world.WorldEntity;
 
@@ -21,12 +21,12 @@ public class Person extends WorldEntity {
     private String _lastName;
     private LocalDate _dateOfBirth;
     private String _socialSecurityNumber;
-    private List<Asset> _assets = new ArrayList<Asset>();
     private List<Liability> _liabilities = new ArrayList<Liability>();
     private List<Expense> _expenses = new ArrayList<Expense>();
     private List<Income> _incomes = new ArrayList<Income>();
     private InvestmentPortfolio _investmentPortfolio;
     private Cash _cash;
+    private List<RealEstate> _realEstates = new ArrayList<RealEstate>();
 
     // Parameterized constructor
     public Person(
@@ -54,8 +54,7 @@ public class Person extends WorldEntity {
     }
 
     public void withStartingCash(double cash) {
-        _cash = new Cash(cash);
-        _assets.add(_cash);
+        _cash = new Cash(cash, world);
     }
 
     public Cash cash() {
@@ -74,12 +73,14 @@ public class Person extends WorldEntity {
         return _socialSecurityNumber;
     }
 
-    public List<Asset> assets() {
-        return _assets;
+    public RealEstate ownRealEstate(String name, double value) {
+        RealEstate realEstate = new RealEstate(name, value, world);
+        this._realEstates.add(realEstate);
+        return realEstate;
     }
 
-    public void addAllAssets(List<Asset> assets) {
-        this._assets.addAll(assets);
+    public List<RealEstate> realEstates() {
+        return this._realEstates;
     }
 
     public List<Liability> liabilities() {

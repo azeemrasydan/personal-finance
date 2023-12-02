@@ -64,7 +64,7 @@ public class App {
 
         System.out.println(ar.cashValue());
 
-        world.pass(365).days();
+        world.pass(720).days();
 
         System.out.println(ar.cashValue());
 
