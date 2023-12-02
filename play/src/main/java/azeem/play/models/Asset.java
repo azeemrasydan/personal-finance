@@ -5,12 +5,6 @@ public class Asset {
     protected double value;
     private AssetType type;
 
-    // Constructors, getters, and setters
-
-    // Default constructor
-    public Asset() {
-    }
-
     // Parameterized constructor
     public Asset(String name, double value, AssetType type) {
         this.name = name;
@@ -24,25 +18,12 @@ public class Asset {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getValue() {
+    public double value() {
         return value;
     }
 
-    public void setValue(double value) {
-        this.value = value;
-    }
-
-    public AssetType getType() {
+    public AssetType type() {
         return type;
     }
 
-    public void setType(AssetType type) {
-        this.type = type;
-    }
-
-    // Other methods as needed
 }

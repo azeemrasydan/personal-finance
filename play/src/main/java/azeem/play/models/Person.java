@@ -54,7 +54,7 @@ public class Person extends WorldEntity {
     }
 
     public double cashValue() {
-        return _cash.getValue();
+        return _cash.value();
     }
 
     public LocalDate dateOfBirth() {

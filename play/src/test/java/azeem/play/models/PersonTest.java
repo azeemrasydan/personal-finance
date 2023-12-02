@@ -32,7 +32,7 @@ public class PersonTest {
 
     @Test
     public void testAddAsset() {
-        Asset asset = new Asset("House", 500000.0, new AssetType("Real Estate"));
+        Asset asset = new Asset("House", 500000.0, AssetType.REAL_ESTATE);
         person.assets().add(asset);
 
         assertEquals(2, person.assets().size());

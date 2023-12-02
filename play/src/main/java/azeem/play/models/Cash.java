@@ -2,7 +2,7 @@ package azeem.play.models;
 
 public class Cash extends Asset {
     public Cash(double value) {
-        super("Cash", value, new AssetType("Cash"));
+        super("Cash", value, AssetType.CASH);
     }
 
     public void add(double cashValue) {
