@@ -40,9 +40,30 @@ public class World implements BoundToTime {
         broadcastDayPassedEvent();
     }
 
+    public WorldPassTime pass(double time) {
+        return new WorldPassTime(time);
+    }
+
     @Override
     public void onDayPassed() {
         _calendar.add(Calendar.DAY_OF_MONTH, 1);
+    }
+
+    public class WorldPassTime {
+        double _time;
+
+        public WorldPassTime(double time) {
+            _time = time;
+        }
+
+        public void days() {
+            int days = (int) _time;
+
+            for (int day = 0; day < days; day++) {
+                passTheDay();
+            }
+        }
+
     }
 
 }
