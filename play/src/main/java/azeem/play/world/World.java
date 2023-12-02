@@ -58,12 +58,48 @@ public class World implements BoundToTime {
             _time = time;
         }
 
-        public void days() {
-            int days = (int) _time;
+        private void travelByDays(int days) {
 
             for (int day = 0; day < days; day++) {
                 passTheDay();
             }
+        }
+
+        /**
+         * Travel the time to {@code z days}
+         * <p>
+         * 30 days from the current time in calendar
+         *
+         */
+        public void days() {
+            int days = (int) _time;
+
+            travelByDays(days);
+
+        }
+
+        /**
+         * Travel the time exactly 30 days times {@code y month}.
+         * <p>
+         * 30 days times {@code y month} from the current time in calendar
+         *
+         */
+        public void months() {
+            int days = (int) (_time * 30);
+
+            travelByDays(days);
+        }
+
+        /**
+         * Travel the time exactly 365 days times {@code y year}.
+         * <p>
+         * 365 days times {@code y year} from the current time in calendar
+         *
+         */
+        public void years() {
+            int days = (int) (_time * 365);
+
+            travelByDays(days);
         }
 
     }
